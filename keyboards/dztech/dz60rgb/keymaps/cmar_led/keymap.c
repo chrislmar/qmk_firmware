@@ -4,6 +4,7 @@
 #define _LAYER2 2
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  // mac (default)
   [_LAYER0] = LAYOUT_ANSI(
       KC_GRV,  KC_1,    KC_2,    KC_3,   KC_4,  KC_5,    KC_6,    KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
       KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,  KC_T,    KC_Y,    KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
@@ -12,10 +13,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, MO(1), KC_LEFT, KC_DOWN, KC_RGHT
       ),
   [_LAYER1] = LAYOUT_ANSI(
-      KC_ESC,  KC_F1,   TO(2),   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_DEL,
-      KC_NO,   KC_LALT, KC_UP,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,  KC_PSCR, KC_SLCK, KC_PAUS, RESET,
+      KC_ESC,  KC_F1,   TO(2),   TO(3),   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9,  TO(0),   KC_F11,  KC_F12,  KC_DEL,
+      KC_NO,   KC_NO,   TO(3),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,  KC_PSCR, KC_SLCK, KC_PAUS, RESET,
       KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,  KC_HOME, KC_PGUP, EEP_RST,
-      KC_MRWD, KC_VOLD, KC_VOLU, KC_MUTE, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_END, KC_PGDN, KC_MFFD,
+      KC_MRWD, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO,   KC_NO,   KC_NO,   TO(0), KC_NO, KC_END, KC_PGDN, KC_MFFD,
       KC_NO,   KC_NO,   KC_NO,   TO(2),   KC_TRNS, KC_NO,   KC_TRNS, KC_NO
       ),
   [_LAYER2] = LAYOUT_ANSI(
