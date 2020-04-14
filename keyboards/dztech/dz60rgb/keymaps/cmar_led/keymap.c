@@ -1,32 +1,42 @@
 #include QMK_KEYBOARD_H
-#define _LAYER0 0
-#define _LAYER1 1
-#define _LAYER2 2
+#define _MAC_L 0
+#define _WIN_L 1
+#define _FN_L  2
+#define _RGB_L 3
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // mac (default)
-  [_LAYER0] = LAYOUT_ANSI(
-      KC_GRV,  KC_1,    KC_2,    KC_3,   KC_4,  KC_5,    KC_6,    KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
-      KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,  KC_T,    KC_Y,    KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
-      KC_ESC,  KC_A,    KC_S,    KC_D,   KC_F,  KC_G,    KC_H,    KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,
-      KC_LSFT, KC_Z,    KC_X,    KC_C,   KC_V,  KC_B,    KC_N,    KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_UP,
-      KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, MO(1), KC_LEFT, KC_DOWN, KC_RGHT
+  [_MAC_L] = LAYOUT_ANSI(
+      KC_GRV,  KC_1,    KC_2,    KC_3,   KC_4,      KC_5,    KC_6,    KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+      KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,      KC_T,    KC_Y,    KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
+      KC_ESC,  KC_A,    KC_S,    KC_D,   KC_F,      KC_G,    KC_H,    KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,
+      KC_LSFT, KC_Z,    KC_X,    KC_C,   KC_V,      KC_B,    KC_N,    KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_UP,
+      KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, MO(_FN_L), KC_LEFT, KC_DOWN, KC_RGHT
       ),
-  [_LAYER1] = LAYOUT_ANSI(
-      KC_ESC,  KC_F1,   TO(2),   TO(3),   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9,  TO(0),   KC_F11,  KC_F12,  KC_DEL,
-      KC_NO,   KC_NO,   TO(3),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,  KC_PSCR, KC_SLCK, KC_PAUS, RESET,
-      KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,  KC_HOME, KC_PGUP, EEP_RST,
-      KC_MRWD, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO,   KC_NO,   KC_NO,   TO(0), KC_NO, KC_END, KC_PGDN, KC_MFFD,
-      KC_NO,   KC_NO,   KC_NO,   TO(2),   KC_TRNS, KC_NO,   KC_TRNS, KC_NO
+  // windows
+  [_WIN_L] = LAYOUT_ANSI(
+      KC_GRV,  KC_1,    KC_2,    KC_3,   KC_4,      KC_5,    KC_6,    KC_7, KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+      KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,      KC_T,    KC_Y,    KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
+      KC_ESC,  KC_A,    KC_S,    KC_D,   KC_F,      KC_G,    KC_H,    KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,
+      KC_LSFT, KC_Z,    KC_X,    KC_C,   KC_V,      KC_B,    KC_N,    KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_UP,
+      KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(_FN_L), KC_LEFT, KC_DOWN, KC_RGHT
       ),
-  [_LAYER2] = LAYOUT_ANSI(
-      KC_NO, KC_NO,   TO(0), KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
-      KC_NO, RGB_TOG, KC_NO, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RGB_MOD, KC_NO, KC_NO, KC_NO,
-      KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   RGB_SPI, RGB_SPD, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
-      KC_NO, KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
-      KC_NO, KC_NO,   KC_NO, TO(0),   KC_NO,   KC_TRNS, KC_NO,   KC_NO
+  [_FN_L] = LAYOUT_ANSI(
+      KC_ESC,  KC_F1,      KC_F2,      TO(_RGB_L), KC_F4,   KC_F5, KC_F6,   KC_F7,      KC_F8, KC_F9,  TO(_MAC_L), KC_F11,  KC_F12,  KC_DEL,
+      KC_NO,   KC_NO,      TO(_WIN_L), KC_NO,      KC_NO,   KC_NO, KC_NO,   KC_NO,      KC_NO, KC_NO,  KC_PSCR,    KC_SLCK, KC_PAUS, RESET,
+      KC_NO,   KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,   KC_NO, KC_NO,   KC_NO,      KC_NO, KC_NO,  KC_HOME,    KC_PGUP, EEP_RST,
+      KC_MRWD, KC_MUTE,    KC_VOLD,    KC_VOLU,    KC_NO,   KC_NO, KC_NO,   TO(_MAC_L), KC_NO, KC_END, KC_PGDN,    KC_MFFD,
+      KC_NO,   TO(_WIN_L), TO(_MAC_L), TO(_RGB_L), KC_TRNS, KC_NO, KC_TRNS, KC_NO
+      ),
+  [_RGB_L] = LAYOUT_ANSI(
+      KC_NO, KC_NO,   TO(_MAC_L), KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
+      KC_NO, RGB_TOG, KC_NO,      RGB_HUI,     RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RGB_MOD, KC_NO, KC_NO, KC_NO,
+      KC_NO, KC_NO,   KC_NO,      KC_NO,       KC_NO,   KC_NO,   KC_NO,   RGB_SPI, RGB_SPD, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,
+      KC_NO, KC_NO,   KC_NO,      KC_NO,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
+      KC_NO, KC_NO,   KC_NO,      TO(_MAC_L),  KC_NO,   KC_TRNS, KC_NO,   KC_NO
       ),
   /*
+   * DZ60 keymap
   [_LAYER] = LAYOUT(
       13,      12,      11,       10,      9,       8,       7,       6,       5,       4,       3,       2,       1,       0,      \
       27,      26,      25,       24,      23,      22,      21,      20,      19,      18,      17,      16,      15,      14,     \
@@ -138,15 +148,21 @@ void rgb_matrix_indicators_user(void)
     rgb_matrix_set_color(62, orange.r, orange.g, orange.b);
 
     switch (biton32(layer_state)) {
-      case _LAYER0:
+      case _MAC_L:
+        // CMD
+        rgb_matrix_set_color(60, 0xFF, 0xFF, 0xFF);
         break;
-      case _LAYER1:
-        // 1
-        rgb_matrix_set_color(12, 0xFF, 0xFF, 0xFF);
+      case _WIN_L:
+        // WINKEY
+        rgb_matrix_set_color(61, 0xFF, 0xFF, 0xFF);
         break;
-      case _LAYER2:
+      case _FN_L:
         // 2
         rgb_matrix_set_color(11, 0xFF, 0xFF, 0xFF);
+        break;
+      case _RGB_L:
+        // 3
+        rgb_matrix_set_color(10, 0xFF, 0xFF, 0xFF);
         break;
     }
   }
